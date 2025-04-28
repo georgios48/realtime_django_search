@@ -9,8 +9,27 @@ https://docs.djangoproject.com/en/5.2/howto/deployment/asgi/
 
 import os
 
-from django.core.asgi import get_asgi_application
+import dotenv
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'realtime_search.settings')
+# Load environment variables
+dotenv.load_dotenv()
 
-application = get_asgi_application()
+# Set settings module
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', os.getenv('DJANGO_SETTINGS_MODULE'))
+
+# Setup Django
+import django
+
+django.setup()
+
+from companies import routing
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
+
+application = ProtocolTypeRouter({
+    "websocket": AuthMiddlewareStack(
+        URLRouter(
+            routing.websocket_urlpatterns
+        )
+    ),
+})

@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'companies',
 ]
+
+ASGI_APPLICATION = 'realtime_search.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
