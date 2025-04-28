@@ -74,6 +74,8 @@ daphne -b 127.0.0.1 -p 8000 realtime_search.asgi:application
 ## Testing
 
 ### Manual testing
+! manual DB is left on purpose in the scope of this interview task !
+
 Inside manual_testing_utils, you can find an existing database with 2 existing test models.
 There is also an existing superuser created: with credentials "admin" for username and "admin" for password.
 
