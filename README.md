@@ -40,7 +40,7 @@ pip install -r requirements.txt
 
 ### 4. Set up environment variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the root directory(where manage.py is located):
 
 ```env
 DJANGO_SETTINGS_MODULE=realtime_search.settings
