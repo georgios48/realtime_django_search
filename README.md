@@ -71,8 +71,29 @@ daphne -b 127.0.0.1 -p 8000 realtime_search.asgi:application
 
 ---
 
-## Running Tests
+## Testing
 
+### Manual testing
+Inside manual_testing_utils, you can find an existing database with 2 existing test models.
+There is also an existing superuser created: with credentials "admin" for username and "admin" for password.
+
+Replace the original database inside realtime_search with the test sampled one inside manual_testing_utils.
+
+After that you can use postman in order to send queries. The user input is stored inside the "query" property of the JSON body, in other words:
+
+After running daphe, connect to the WebSocket address -> ws://localhost:8000/ws/search/
+
+And send messages using this template:
+
+```
+{
+    "query": "<userInput>"
+}
+```
+
+Unable to provide exported postman collection due to issue in exporting postman collections that include websocket
+
+### Running unittests
 Navigate to realtime_search, where manage.py is located and run using:
 
 ```bash
